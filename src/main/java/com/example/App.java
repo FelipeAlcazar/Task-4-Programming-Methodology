@@ -84,7 +84,7 @@ public class App
     }
 
     public static void printSol(String[] Sol, int N){
-        System.out.println("Expected Result: "+N+" has been found");
+        System.out.println("Expected Result "+N+" has been found");
         System.out.println("Nerdle expresion:");
         for (String str : Sol) {
             System.out.print(str);
@@ -95,8 +95,8 @@ public class App
     public static void printInstructions(int N, String [] digitsOperands){
         System.out.println("The result must be: "+ N);
         System.out.println("Digits and operands for this execution: ");
-        System.out.println(Arrays.toString(digitsOperands)+"\n");
-
+        System.out.println(Arrays.toString(digitsOperands));
+        System.out.println("NOTE: there may not be possible combinations for a certain result since we only use 7 different numbers."+"\n");
     }
     
     public static String[] genDigitsAndOperands(){
