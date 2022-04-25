@@ -21,7 +21,7 @@ public class App
     /*********************************************************************
     *
     * Method name: main
-    *
+    * Author/s name: Felipe Alcázar Gómez and Elena Megía Cañaveras.
     * Description of the Method:In the main method we call other methods to execute the nerdle.
     *
     *********************************************************************/
