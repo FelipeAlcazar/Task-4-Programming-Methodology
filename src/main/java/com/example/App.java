@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 
 public class App 
 {
-
     /*********************************************************************
     *
     * Method name: main
@@ -38,7 +37,14 @@ public class App
         try{System. in. read();}
         catch(Exception e){}
 
-        Nerdle(0, digitsOperands, sol, N);
+        String finalSol[]=new String[5];
+        finalSol[0]="null";
+        Nerdle(0, digitsOperands, sol, finalSol, N);
+        
+        if(! finalSol[0].equals("null"))
+            printSol(finalSol,N);
+        else
+            System.out.print("No possible expression has been found.");
     }
 
 
@@ -54,22 +60,21 @@ public class App
     *                    int, N
     *********************************************************************/
 
-    public static void Nerdle(int stage, String[] digitsOperands, String sol[], int N){
+    public static void Nerdle(int stage, String[] digitsOperands, String sol[], String finalSol[], int N){
         if(stage==sol.length){
-            if(isSolution(stage, digitsOperands, sol, N)){
-                printSol(sol,N);
-                System.exit(0);
+            if(isSolution(stage, digitsOperands, sol, N) && finalSol[0].equals("null")){
+                System.arraycopy(sol, 0, finalSol, 0, sol.length);
             }
         }else{
             if(stage!=2){
                 for (String operand : subArray(digitsOperands, 0, 6)) {
                     sol[stage]=operand;
-                    Nerdle(stage+1, digitsOperands, sol, N);
+                    Nerdle(stage+1, digitsOperands, sol, finalSol, N);
                 }
             }else{
                 for (String operand : subArray(digitsOperands, 7, 8)) {
                     sol[stage]=operand;
-                    Nerdle(stage+1, digitsOperands, sol, N);
+                    Nerdle(stage+1, digitsOperands, sol, finalSol, N);
                 }
             }
 
