@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 /*********************************************************************
@@ -27,19 +28,15 @@ public class App
     *********************************************************************/
     public static void main( String[] args )
     {
-        /*
-        Ejemplo del PDF (descomentar para ver)
-
-        String[] digitsOperandsEx={"3","2","8","5","0","4","7","/","*"};
-        int resEx=75;
-        String sol[]=new String[5];
-        Nerdle(0, digitsOperandsEx, sol, resEx);
-        */
-
+        System.out.println("Welcome to Nerdle, a game that consists on finding a mathematical expression given a set of numbers, operations and a result. \nLet's begin the execution:\n");
         int N=generateRandomResult(99,-9);
         String sol[]=new String[5];
         String[] digitsOperands=genDigitsAndOperands();
         printInstructions(N, digitsOperands);
+
+        System. out. println("Press the ENTER key to try finding an expresion");
+        try{System. in. read();}
+        catch(Exception e){}
 
         Nerdle(0, digitsOperands, sol, N);
     }
@@ -61,6 +58,7 @@ public class App
         if(stage==sol.length){
             if(isSolution(stage, digitsOperands, sol, N)){
                 printSol(sol,N);
+                System.exit(0);
             }
         }else{
             if(stage!=2){
@@ -74,6 +72,7 @@ public class App
                     Nerdle(stage+1, digitsOperands, sol, N);
                 }
             }
+
         }
     }
 
